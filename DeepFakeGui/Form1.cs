@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -45,12 +47,22 @@ namespace DeepFakeGui
             var file = imagePickDialog.FileName;
             Bitmap image = new Bitmap(file);
             imagePreviewBox.Image = image;
-            
+            imagePath = imagePickDialog.FileName;
         }
 
         private void videoPickDialog_FileOk(object sender, CancelEventArgs e)
         {
-            
+            videoPath = videoPickDialog.FileName;
+        }
+
+        private async void processButton_Click(object sender, EventArgs e)
+        {
+            Utils.prepare(videoPath, imagePath, (int) numericUpDown1.Value);
+            await Utils.generate(checkBox1.Checked);
+            if (File.Exists("output.mp4"))
+            {
+                File.Move("output.mp4", "output/output.mp4");
+            }
         }
     }
 }

@@ -7,24 +7,26 @@ namespace DeepFakeGui
 {
     public class Utils
     {
-        public static async void runFfmpeg(string parameters)
+        public static string videoPath = "";
+        public static string imagePath = "";
+        public static async Task runFfmpeg(string parameters)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = $@"{Program.ffmpegPath}\ffmpeg.exe";
-            startInfo.Arguments = parameters;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = $"/K start cmd.exe /K \"{Program.ffmpegPath}\\ffmpeg.exe\" " + parameters;
             startInfo.UseShellExecute = false;
             startInfo.CreateNoWindow = true;
             startInfo.RedirectStandardOutput = true;
             startInfo.RedirectStandardError = true;
             Process process = Process.Start(startInfo);
-            await process.WaitForExitAsync();
+            process.WaitForExit();
         }
         
-        public static async void runFom(string parameters)
+        public static async Task runFom(string parameters)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = $@"{Program.fomPath}\fom.exe";
-            startInfo.Arguments = parameters;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = $"/K start cmd.exe /K py \"{Program.fomPath}\\demo.py\" " + parameters + " && exit";
             startInfo.UseShellExecute = false;
             startInfo.CreateNoWindow = true;
             startInfo.RedirectStandardOutput = true;
@@ -40,9 +42,23 @@ namespace DeepFakeGui
 
             string outputVideo = Path.GetFullPath(@"processing/v.mp4");
             string outputImage = Path.GetFullPath(@"processing/i.png");
+            videoPath = $"\"{outputVideo}\"";
+            imagePath = $"\"{outputImage}\"";
 
-            string command1 = $"-i {inputVideo} -vf \"scale=w={Width}:h={Width}:force_original_aspect_ratio=1,pad={Width}:{Width}:(ow-iw)/2:(oh-ih)/2\"";
-            string command2 = $"";
+            string command1 = $"-i \"{inputVideo}\" -y -vf \"scale=w={Width}:h={Width}:force_original_aspect_ratio=1,pad={Width}:{Width}:(ow-iw)/2:(oh-ih)/2\" \"{outputVideo}\"";
+            string command2 = $"-i \"{inputImage}\" -y -vf \"scale=w={Width}:h={Width}:force_original_aspect_ratio=1,pad={Width}:{Width}:(ow-iw)/2:(oh-ih)/2\" \"{outputImage}\"";
+            runFfmpeg(command1);
+            runFfmpeg(command2);
+        }
+
+        public static async Task generate(bool Absolute)
+        {
+            string command = $"--source_image {imagePath} --driving_video {videoPath} --checkpoint \"{Path.GetFullPath("models/vox-adv-cpk.pth.tar")}\" --config \"{Program.fomPath}\\config\\vox-adv-256.yaml\" --adapt_scale";
+            if (!Absolute)
+            {
+                command += " --relative";
+            }
+            await runFom(command);
         }
     }
 

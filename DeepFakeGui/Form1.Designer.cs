@@ -36,6 +36,8 @@
             this.videoLoadButton = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
+            this.processButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize) (this.imagePreviewBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize) (this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -43,6 +45,7 @@
             // imagePreviewBox
             // 
             this.imagePreviewBox.BackColor = System.Drawing.SystemColors.Control;
+            this.imagePreviewBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.imagePreviewBox.Location = new System.Drawing.Point(12, 12);
             this.imagePreviewBox.Name = "imagePreviewBox";
             this.imagePreviewBox.Size = new System.Drawing.Size(128, 125);
@@ -102,22 +105,49 @@
             this.numericUpDown1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.numericUpDown1.Value = new decimal(new int[] {512, 0, 0, 0});
             // 
+            // checkBox1
+            // 
+            this.checkBox1.Location = new System.Drawing.Point(146, 70);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(128, 26);
+            this.checkBox1.TabIndex = 5;
+            this.checkBox1.Text = "Absolute Position";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // processButton
+            // 
+            this.processButton.Location = new System.Drawing.Point(12, 143);
+            this.processButton.Name = "processButton";
+            this.processButton.Size = new System.Drawing.Size(128, 33);
+            this.processButton.TabIndex = 6;
+            this.processButton.Text = "Process";
+            this.processButton.UseVisualStyleBackColor = true;
+            this.processButton.Click += new System.EventHandler(this.processButton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 273);
+            this.ClientSize = new System.Drawing.Size(291, 196);
+            this.Controls.Add(this.processButton);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.numericUpDown1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.videoLoadButton);
             this.Controls.Add(this.imageLoadButton);
             this.Controls.Add(this.imagePreviewBox);
+            this.MaximumSize = new System.Drawing.Size(307, 235);
+            this.MinimumSize = new System.Drawing.Size(307, 235);
             this.Name = "Form1";
             this.Text = "First order motion gui";
             ((System.ComponentModel.ISupportInitialize) (this.imagePreviewBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize) (this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button processButton;
+
+        private System.Windows.Forms.CheckBox checkBox1;
 
         private System.Windows.Forms.NumericUpDown numericUpDown1;
 

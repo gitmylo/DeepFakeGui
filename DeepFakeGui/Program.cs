@@ -76,7 +76,7 @@ namespace DeepFakeGui
             var mainFfmpegDir = @"ffmpeg/";
             mainFfmpegDir = Directory.GetDirectories(mainFfmpegDir).First() + "/bin";
             mainFfmpegDir = Path.GetFullPath(mainFfmpegDir);
-            fomPath = mainFfmpegDir;
+            ffmpegPath = mainFfmpegDir;
         }
         
         static void CheckFOM()
