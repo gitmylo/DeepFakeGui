@@ -62,7 +62,7 @@ namespace DeepFakeGui
         private async void processButton_Click(object sender, EventArgs e)
         {
             Utils.prepare(videoPath, imagePath, (int) numericUpDown1.Value);
-            await Utils.generate(checkBox1.Checked);
+            await Utils.generate(checkBox1.Checked, modelBox.Text);
             Thread.Sleep(2000);
             if (File.Exists("result.mp4"))
             {

@@ -38,6 +38,8 @@
             this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
             this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.processButton = new System.Windows.Forms.Button();
+            this.modelBox = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize) (this.imagePreviewBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize) (this.numericUpDown1)).BeginInit();
             this.SuspendLayout();
@@ -118,17 +120,35 @@
             // 
             this.processButton.Location = new System.Drawing.Point(12, 143);
             this.processButton.Name = "processButton";
-            this.processButton.Size = new System.Drawing.Size(128, 33);
+            this.processButton.Size = new System.Drawing.Size(128, 41);
             this.processButton.TabIndex = 6;
             this.processButton.Text = "Process";
             this.processButton.UseVisualStyleBackColor = true;
             this.processButton.Click += new System.EventHandler(this.processButton_Click);
+            // 
+            // modelBox
+            // 
+            this.modelBox.Location = new System.Drawing.Point(146, 164);
+            this.modelBox.Name = "modelBox";
+            this.modelBox.Size = new System.Drawing.Size(133, 20);
+            this.modelBox.TabIndex = 7;
+            this.modelBox.Text = "vox-adv";
+            // 
+            // label2
+            // 
+            this.label2.Location = new System.Drawing.Point(146, 143);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(128, 18);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Config/Dataset";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(291, 196);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.modelBox);
             this.Controls.Add(this.processButton);
             this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.numericUpDown1);
@@ -143,7 +163,13 @@
             ((System.ComponentModel.ISupportInitialize) (this.imagePreviewBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize) (this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
         }
+
+        private System.Windows.Forms.TextBox modelBox;
+
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label label2;
 
         private System.Windows.Forms.Button processButton;
 

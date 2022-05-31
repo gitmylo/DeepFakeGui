@@ -52,9 +52,9 @@ namespace DeepFakeGui
             runFfmpeg(command2);
         }
 
-        public static async Task generate(bool Absolute)
+        public static async Task generate(bool Absolute, string dataset)
         {
-            string command = $"--source_image {imagePath} --driving_video {videoPath} --checkpoint \"{Path.GetFullPath("models/vox-adv-cpk.pth.tar")}\" --config \"{Program.fomPath}\\config\\vox-adv-256.yaml\" --adapt_scale";
+            string command = $"--source_image {imagePath} --driving_video {videoPath} --checkpoint \"{Path.GetFullPath($"models/{dataset}-cpk.pth.tar")}\" --config \"{Program.fomPath}\\config\\{dataset}-256.yaml\" --adapt_scale";
             if (!Absolute)
             {
                 command += " --relative";
