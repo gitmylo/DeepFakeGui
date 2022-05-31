@@ -45,9 +45,13 @@ namespace DeepFakeGui
         private void imagePickDialog_FileOk(object sender, CancelEventArgs e)
         {
             var file = imagePickDialog.FileName;
-            Bitmap image = new Bitmap(file);
-            imagePreviewBox.Image = image;
-            imagePath = imagePickDialog.FileName;
+            try
+            {
+                Bitmap image = new Bitmap(file);
+                imagePreviewBox.Image = image;
+            }
+            catch (Exception exception) {}
+            imagePath = file;
         }
 
         private void videoPickDialog_FileOk(object sender, CancelEventArgs e)
@@ -59,9 +63,10 @@ namespace DeepFakeGui
         {
             Utils.prepare(videoPath, imagePath, (int) numericUpDown1.Value);
             await Utils.generate(checkBox1.Checked);
-            if (File.Exists("output.mp4"))
+            Thread.Sleep(2000);
+            if (File.Exists("result.mp4"))
             {
-                File.Move("output.mp4", "output/output.mp4");
+                File.Move("result.mp4", $"output/{((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds()}.mp4");
             }
         }
     }

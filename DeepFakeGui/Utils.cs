@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DeepFakeGui
 {
@@ -9,30 +10,30 @@ namespace DeepFakeGui
     {
         public static string videoPath = "";
         public static string imagePath = "";
-        public static async Task runFfmpeg(string parameters)
+        public static void runFfmpeg(string parameters)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = "cmd.exe";
-            startInfo.Arguments = $"/K start cmd.exe /K \"{Program.ffmpegPath}\\ffmpeg.exe\" " + parameters;
+            startInfo.FileName = $"{Program.ffmpegPath}/ffmpeg.exe";
+            startInfo.Arguments = parameters;//\"{Program.ffmpegPath}/ffmpeg.exe\" " + parameters;
             startInfo.UseShellExecute = false;
-            startInfo.CreateNoWindow = true;
-            startInfo.RedirectStandardOutput = true;
-            startInfo.RedirectStandardError = true;
+            startInfo.CreateNoWindow = false;
+            startInfo.RedirectStandardOutput = false;
+            startInfo.RedirectStandardError = false;
             Process process = Process.Start(startInfo);
             process.WaitForExit();
         }
         
-        public static async Task runFom(string parameters)
+        public static void runFom(string parameters)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = "cmd.exe";
-            startInfo.Arguments = $"/K start cmd.exe /K py \"{Program.fomPath}\\demo.py\" " + parameters + " && exit";
+            startInfo.FileName = "py";
+            startInfo.Arguments = $"\"{Program.fomPath}/demo.py\" " + parameters;
             startInfo.UseShellExecute = false;
-            startInfo.CreateNoWindow = true;
-            startInfo.RedirectStandardOutput = true;
-            startInfo.RedirectStandardError = true;
+            startInfo.CreateNoWindow = false;
+            startInfo.RedirectStandardOutput = false;
+            startInfo.RedirectStandardError = false;
             Process process = Process.Start(startInfo);
-            await process.WaitForExitAsync();
+            process.WaitForExit();
         }
 
         public static void prepare(string inputVideo, string inputImage, int Width)
@@ -58,24 +59,7 @@ namespace DeepFakeGui
             {
                 command += " --relative";
             }
-            await runFom(command);
-        }
-    }
-
-    public static class Extensions
-    {
-        public static Task WaitForExitAsync(this Process process, 
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            if (process.HasExited) return Task.CompletedTask;
-
-            var tcs = new TaskCompletionSource<object>();
-            process.EnableRaisingEvents = true;
-            process.Exited += (sender, args) => tcs.TrySetResult(null);
-            if(cancellationToken != default(CancellationToken))
-                cancellationToken.Register(() => tcs.SetCanceled());
-
-            return process.HasExited ? Task.CompletedTask : tcs.Task;
+            runFom(command);
         }
     }
 }
