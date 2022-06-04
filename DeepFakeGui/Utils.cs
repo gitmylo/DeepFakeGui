@@ -10,13 +10,19 @@ namespace DeepFakeGui
     {
         public static string videoPath = "";
         public static string imagePath = "";
-        public static void runFfmpeg(string parameters)
+        public static void runFfmpeg(string parameters, bool withPause)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
-            startInfo.FileName = $"{Program.ffmpegPath}/ffmpeg.exe";
-            startInfo.Arguments = parameters;//\"{Program.ffmpegPath}/ffmpeg.exe\" " + parameters;
-            //startInfo.FileName = "cmd";
-            //startInfo.Arguments = $"/c {Program.ffmpegPath}/ffmpeg.exe {parameters} & PAUSE";
+            if (withPause)
+            {
+                startInfo.FileName = "cmd";
+                startInfo.Arguments = $"/c {Program.ffmpegPath}/ffmpeg.exe {parameters} & PAUSE";
+            }
+            else
+            {
+                startInfo.FileName = $"{Program.ffmpegPath}/ffmpeg.exe";
+                startInfo.Arguments = parameters;//\"{Program.ffmpegPath}/ffmpeg.exe\" " + parameters;
+            }
             startInfo.UseShellExecute = false;
             startInfo.CreateNoWindow = false;
             startInfo.RedirectStandardOutput = false;
@@ -50,8 +56,8 @@ namespace DeepFakeGui
 
             string command1 = $"-i \"{inputVideo}\" -y -vf \"scale=w={Width}:h={Width}:force_original_aspect_ratio=1,pad={Width}:{Width}:(ow-iw)/2:(oh-ih)/2\" \"{outputVideo}\"";
             string command2 = $"-i \"{inputImage}\" -y -vf \"scale=w={Width}:h={Width}:force_original_aspect_ratio=1,pad={Width}:{Width}:(ow-iw)/2:(oh-ih)/2\" \"{outputImage}\"";
-            runFfmpeg(command1);
-            runFfmpeg(command2);
+            runFfmpeg(command1, false);
+            runFfmpeg(command2, false);
         }
 
         public static async Task generate(bool Absolute, string dataset)

@@ -63,8 +63,8 @@ namespace DeepFakeGui
         {
             Utils.prepare(videoPath, imagePath, (int) numericUpDown1.Value);
             await Utils.generate(checkBox1.Checked, modelBox.Text);
-            Thread.Sleep(5000);
-            Utils.runFfmpeg($"-i \"{Path.GetFullPath("result.mp4")}\" -i {Utils.videoPath} -c copy -map 0:0? -map 1:1? -shortest {Path.GetFullPath($"output/{((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds()}.mp4")}");
+            Thread.Sleep(3000);
+            Utils.runFfmpeg($"-i \"{Path.GetFullPath("result.mp4")}\" -i {Utils.videoPath} -c copy -map 0:0? -map 1:1? -shortest {Path.GetFullPath($"output/{((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds()}.mp4")}", true);
             /*if (File.Exists("result.mp4"))
             {
                 File.Move("result.mp4", $"output/{((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds()}.mp4");

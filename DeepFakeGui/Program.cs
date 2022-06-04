@@ -23,6 +23,14 @@ namespace DeepFakeGui
         [STAThread]
         static void Main()
         {
+            //Ask the user if they have microsoft visual c++ sdk installed and if not, open the download link
+            var response = MessageBox.Show("Do you have Microsoft Visual C++ 2017 Redistributable for Visual Studio 2017 installed? If not, please download it and install it.", "Microsoft Visual C++ 2017 Redistributable for Visual Studio 2017", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (response == DialogResult.No)
+            {
+                Process.Start("https://www.microsoft.com/en-us/download/details.aspx?id=40784");
+            }
+            
+            
             Directory.CreateDirectory("templateimages");
             Directory.CreateDirectory("motionvideos");
             Directory.CreateDirectory("output");
