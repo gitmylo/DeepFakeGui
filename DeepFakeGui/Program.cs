@@ -86,19 +86,19 @@ namespace DeepFakeGui
             File.WriteAllText(fomPath + "\\augmentation.py", text);
             
             File.WriteAllText(fomPath + "\\requirements.txt",
-                "imageio==2.19.3\n" +
-                "matplotlib==3.5.1\n" +
-                "numpy==1.20.3\n" +
-                "pandas==1.4.2\n" +
-                "python-dateutil==2.8.2\n" +
-                "pytz==2021.1\n" +
-                "PyYAML==6.0\n" +
-                "scikit-image==0.19.2\n" +
-                "scikit-learn==1.0.2\n" +
-                "scipy==1.7.3\n" +
+                "imageio\n" +
+                "matplotlib\n" +
+                "numpy\n" +
+                "pandas\n" +
+                "python-dateutil\n" +
+                "pytz\n" +
+                "PyYAML\n" +
+                "scikit-image\n" +
+                "scikit-learn\n" +
+                "scipy\n" +
                 "torch==1.11.0+cu113\n" +
                 "torchvision==0.12.0+cu113\n" +
-                "tqdm==4.62.3\n");
+                "tqdm\n");
             
             MessageBox.Show("FOM patched, now installing packages do not close the cmd window, even if it gets stuck... press OK to continue", "FOM patched", MessageBoxButtons.OK);
             
