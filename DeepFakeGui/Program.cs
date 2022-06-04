@@ -98,7 +98,8 @@ namespace DeepFakeGui
                 "scipy\n" +
                 "torch==1.11.0+cu113\n" +
                 "torchvision==0.12.0+cu113\n" +
-                "tqdm\n");
+                "tqdm\n" +
+                "imageio-ffmpeg\n");
             
             MessageBox.Show("FOM patched, now installing packages do not close the cmd window, even if it gets stuck... press OK to continue", "FOM patched", MessageBoxButtons.OK);
             
