@@ -27,7 +27,7 @@ namespace DeepFakeGui
             var response = MessageBox.Show("Do you have Microsoft Visual C++ 2017 Redistributable for Visual Studio 2017 installed? If not, please download it and install it.", "Microsoft Visual C++ 2017 Redistributable for Visual Studio 2017", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (response == DialogResult.No)
             {
-                Process.Start("https://www.microsoft.com/en-us/download/details.aspx?id=40784");
+                Process.Start("https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15");
             }
             
             

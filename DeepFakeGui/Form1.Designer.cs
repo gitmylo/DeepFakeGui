@@ -59,12 +59,14 @@
             // 
             this.imagePickDialog.Filter = "All Graphics Types|*.bmp;*.jpg;*.jpeg;*.png;*.tif;*.tiff|BMP|*.bmp|GIF|*.gif|JPG|" + "*.jpg;*.jpeg|PNG|*.png|TIFF|*.tif;*.tiff";
             this.imagePickDialog.InitialDirectory = "templateimages";
+            this.imagePickDialog.Tag = "";
             this.imagePickDialog.Title = "Pick an image";
             this.imagePickDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.imagePickDialog_FileOk);
             // 
             // videoPickDialog
             // 
             this.videoPickDialog.InitialDirectory = "motionvideos";
+            this.videoPickDialog.Tag = "";
             this.videoPickDialog.Title = "Pick a video";
             this.videoPickDialog.FileOk += new System.ComponentModel.CancelEventHandler(this.videoPickDialog_FileOk);
             // 
