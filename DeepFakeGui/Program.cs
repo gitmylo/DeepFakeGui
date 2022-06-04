@@ -28,6 +28,7 @@ namespace DeepFakeGui
             if (response == DialogResult.No)
             {
                 Process.Start("https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15");
+                Application.Exit();
             }
             
             
