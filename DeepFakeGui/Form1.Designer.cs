@@ -57,7 +57,6 @@
             // 
             // imagePickDialog
             // 
-            this.imagePickDialog.Filter = "All Graphics Types|*.bmp;*.jpg;*.jpeg;*.png;*.tif;*.tiff|BMP|*.bmp|GIF|*.gif|JPG|" + "*.jpg;*.jpeg|PNG|*.png|TIFF|*.tif;*.tiff";
             this.imagePickDialog.InitialDirectory = "templateimages";
             this.imagePickDialog.Tag = "";
             this.imagePickDialog.Title = "Pick an image";
