@@ -156,10 +156,12 @@
             this.Controls.Add(this.videoLoadButton);
             this.Controls.Add(this.imageLoadButton);
             this.Controls.Add(this.imagePreviewBox);
+            this.HelpButton = true;
             this.MaximumSize = new System.Drawing.Size(307, 235);
             this.MinimumSize = new System.Drawing.Size(307, 235);
             this.Name = "Form1";
             this.Text = "First order motion gui";
+            this.HelpRequested += new System.Windows.Forms.HelpEventHandler(this.form1_HelpRequested);
             ((System.ComponentModel.ISupportInitialize) (this.imagePreviewBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize) (this.numericUpDown1)).EndInit();
             this.ResumeLayout(false);

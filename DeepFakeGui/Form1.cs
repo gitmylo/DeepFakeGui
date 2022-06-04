@@ -63,10 +63,20 @@ namespace DeepFakeGui
         {
             Utils.prepare(videoPath, imagePath, (int) numericUpDown1.Value);
             await Utils.generate(checkBox1.Checked, modelBox.Text);
-            Thread.Sleep(2000);
-            if (File.Exists("result.mp4"))
+            Thread.Sleep(5000);
+            Utils.runFfmpeg($"-i \"{Path.GetFullPath("result.mp4")}\" -i {Utils.videoPath} -c copy -map 0:0? -map 1:1? -shortest {Path.GetFullPath($"output/{((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds()}.mp4")}");
+            /*if (File.Exists("result.mp4"))
             {
                 File.Move("result.mp4", $"output/{((DateTimeOffset)DateTime.Now).ToUnixTimeSeconds()}.mp4");
+            }*/
+        }
+
+        private void form1_HelpRequested(object sender, HelpEventArgs hlpevent)
+        {
+            //Ask the user if they want to open the output folder and open it if they do
+            if (MessageBox.Show("Would you like to open the output folder?", "Open output folder?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                System.Diagnostics.Process.Start("explorer.exe", "output");
             }
         }
     }

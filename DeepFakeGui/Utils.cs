@@ -15,6 +15,8 @@ namespace DeepFakeGui
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = $"{Program.ffmpegPath}/ffmpeg.exe";
             startInfo.Arguments = parameters;//\"{Program.ffmpegPath}/ffmpeg.exe\" " + parameters;
+            //startInfo.FileName = "cmd";
+            //startInfo.Arguments = $"/c {Program.ffmpegPath}/ffmpeg.exe {parameters} & PAUSE";
             startInfo.UseShellExecute = false;
             startInfo.CreateNoWindow = false;
             startInfo.RedirectStandardOutput = false;
