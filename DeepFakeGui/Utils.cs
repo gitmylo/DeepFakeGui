@@ -16,7 +16,7 @@ namespace DeepFakeGui
             if (withPause)
             {
                 startInfo.FileName = "cmd";
-                startInfo.Arguments = $"/c {Program.ffmpegPath}/ffmpeg.exe {parameters} & PAUSE";
+                startInfo.Arguments = $"/c \"{Program.ffmpegPath}/ffmpeg.exe\" {parameters} & PAUSE";
             }
             else
             {
