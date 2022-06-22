@@ -5,6 +5,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -12,9 +13,14 @@ namespace DeepFakeGui
 {
     static class Program
     {
+        // dllimport for allocconsole
+        [DllImport("kernel32.dll")]
+        static extern bool AllocConsole();
+    
+    
         public static string fomPath;
         public static string ffmpegPath;
-        static string ffmpegDownloadLink = "https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2022-05-30-12-36/ffmpeg-n5.0.1-4-ga5ebb3d25e-win64-lgpl-5.0.zip";
+        static string ffmpegDownloadLink = "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.4.1-essentials_build.zip";
         static string fomDownloadLink = "https://github.com/AliaksandrSiarohin/first-order-model/archive/refs/heads/master.zip";
         
         /// <summary>
@@ -36,6 +42,7 @@ namespace DeepFakeGui
             Directory.CreateDirectory("motionvideos");
             Directory.CreateDirectory("output");
             Directory.CreateDirectory("processing");
+            //AllocConsole();
             CheckFFmpeg();
             CheckFOM();
             Application.EnableVisualStyles();
