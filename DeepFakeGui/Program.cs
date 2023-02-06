@@ -20,7 +20,7 @@ namespace DeepFakeGui
     
         public static string fomPath;
         public static string ffmpegPath;
-        static string ffmpegDownloadLink = "https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.4.1-essentials_build.zip";
+        static string ffmpegDownloadLink = "https://www.gyan.dev/ffmpeg/builds/ffmpeg-release-essentials.zip";
         static string fomDownloadLink = "https://github.com/AliaksandrSiarohin/first-order-model/archive/refs/heads/master.zip";
         
         /// <summary>
@@ -121,7 +121,7 @@ namespace DeepFakeGui
             
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = "py";
-            startInfo.Arguments = $"-m pip install -r \"{Path.GetFullPath(fomPath + "\\requirements.txt")}\"";
+            startInfo.Arguments = $"-3.8 -m pip install -r \"{Path.GetFullPath(fomPath + "\\requirements.txt")}\"";
             startInfo.UseShellExecute = false;
             startInfo.CreateNoWindow = false;
             startInfo.RedirectStandardOutput = false;

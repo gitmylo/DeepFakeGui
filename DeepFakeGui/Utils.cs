@@ -35,7 +35,7 @@ namespace DeepFakeGui
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = "py";
-            startInfo.Arguments = $"\"{Program.fomPath}/demo.py\" " + parameters;
+            startInfo.Arguments = $"-3.8 \"{Program.fomPath}/demo.py\" " + parameters;
             startInfo.UseShellExecute = false;
             startInfo.CreateNoWindow = false;
             startInfo.RedirectStandardOutput = false;
