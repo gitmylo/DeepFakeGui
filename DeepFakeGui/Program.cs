@@ -121,7 +121,7 @@ namespace DeepFakeGui
             
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = "py";
-            startInfo.Arguments = $"-3.8 -m pip install -r \"{Path.GetFullPath(fomPath + "\\requirements.txt")}\"";
+            startInfo.Arguments = $"-m pip install -r \"{Path.GetFullPath(fomPath + "\\requirements.txt")}\"";
             startInfo.UseShellExecute = false;
             startInfo.CreateNoWindow = false;
             startInfo.RedirectStandardOutput = false;
