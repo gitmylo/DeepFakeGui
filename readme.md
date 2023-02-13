@@ -9,7 +9,7 @@ FOM has some issues on newer version of python, this gui aims to fix that by pat
 # Requirements
 some things are not automatically installed, you will need to install them yourself
 * python 3.8.10 (from the python.org website, not windows store)
-* pytorch (run the following command): `py -m pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113`
+* pytorch (run the following command): `py -3.8 -m pip install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113`
 * [microsoft visual c++ 2017 sdk](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=15)
 
    ![Desktop environment with c++](/visual-c++.png)
