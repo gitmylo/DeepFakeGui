@@ -112,8 +112,6 @@ namespace DeepFakeGui
                 "scikit-image\n" +
                 "scikit-learn\n" +
                 "scipy\n" +
-                "torch==1.11.0+cu113\n" +
-                "torchvision==0.12.0+cu113\n" +
                 "tqdm\n" +
                 "imageio-ffmpeg\n");
             
@@ -121,7 +119,7 @@ namespace DeepFakeGui
             
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = "py";
-            startInfo.Arguments = $"-m pip install -r \"{Path.GetFullPath(fomPath + "\\requirements.txt")}\"";
+            startInfo.Arguments = $"-3.8 -m pip install -r \"{Path.GetFullPath(fomPath + "\\requirements.txt")}\"";
             startInfo.UseShellExecute = false;
             startInfo.CreateNoWindow = false;
             startInfo.RedirectStandardOutput = false;
