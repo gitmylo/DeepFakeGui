@@ -1,3 +1,6 @@
+# Notice
+There were no virtual environments used, I will need to recode a version that does use venv environments. For cleaner code and less issues with it reinstalling packages or downgrading/upgrading packages you need for another project. I will make sure to implement this if I continue working on this project some day.
+
 # Introduction
 DeepFakeGui is a gui for the [first order motion model](https://github.com/AliaksandrSiarohin/first-order-model)
 it uses ffmpeg to prepare images automatically, and adds the audio back to the video, using ffmpeg.
